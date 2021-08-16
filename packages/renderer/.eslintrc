@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "@antfu"
+  ],
+  "ignorePatterns": [
+    "types/env.d.ts",
+    "node_modules/**",
+    "**/dist/**"
+  ]
+}

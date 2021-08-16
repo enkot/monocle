@@ -32,7 +32,11 @@
     "*.{js,ts,vue}": "eslint --cache --fix"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.7.0",
+    "@iconify/json": "^1.1.387",
     "@types/electron-devtools-installer": "^2.2.0",
+    "@types/express": "^4.17.13",
+    "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@vitejs/plugin-vue": "^1.4.0",
     "cross-env": "^7.0.3",
@@ -46,11 +50,27 @@
     "spectron": "^15.0.0",
     "typescript": "^4.3.5",
     "vite": "^2.4.4",
-    "vue-tsc": "^0.2.2"
+    "vite-plugin-components": "^0.13.2",
+    "vite-plugin-icons": "^0.6.5",
+    "vite-plugin-pages": "^0.17.3",
+    "vite-plugin-vue-layouts": "^0.3.1",
+    "vite-plugin-windicss": "^1.2.7",
+    "vue-tsc": "^0.2.2",
+    "windicss": "^3.1.7"
   },
   "dependencies": {
+    "@netlify/functions": "^0.7.2",
+    "@vueuse/core": "^5.3.0",
+    "@vueuse/electron": "^5.3.0",
+    "axios": "^0.21.1",
+    "electron-tray-window": "^1.2.5",
+    "electron-traywindow-positioner": "^1.1.0",
     "electron-updater": "^4.4.5",
-    "vue": "^3.2.2",
+    "express": "^4.17.1",
+    "swiper": "^6.8.1",
+    "uuid": "^8.3.2",
+    "vite-svg-loader": "^2.1.1",
+    "vue": "3.2.2",
     "vue-router": "^4.0.11"
   }
 }
