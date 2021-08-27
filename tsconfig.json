@@ -27,6 +27,7 @@
     }
   },
   "exclude": [
+    "api",
     "dist",
     "node_modules"
   ]

@@ -8,7 +8,7 @@
         <div class="flex justify-between items-start">
           <div class="flex flex-col">
             <span
-              class="text-xs text-gray-400 uppercase font-semibold tracking-widest"
+              class="text-xs text-blue-gray-400 uppercase font-semibold tracking-widest"
             >
               Баланс
             </span>
@@ -23,7 +23,7 @@
           <MastercardLogo v-else class="w-16" />
         </div>
         <span
-          class="mt-1 text-xs text-gray-400 uppercase font-semibold tracking-widest"
+          class="mt-1 text-xs text-blue-gray-400 font-semibold"
         >
           Кредитний ліміт: {{ account.currency.symbol }}
           {{ account.creditLimit.toFixed(2) }}
@@ -31,24 +31,22 @@
       </div>
       <div class="flex justify-between space-x-1 text-sm">
         <div
-          class="text-gray-500 truncate cursor-pointer"
+          class="text-blue-gray-500 truncate cursor-pointer"
           :class="
             account.type === 'white'
-              ? 'hover:text-gray-800'
-              : 'hover:text-gray-200'
+              ? 'hover:text-blue-gray-800'
+              : 'hover:text-blue-gray-200'
           "
-          @mouseenter="showIBAN = true"
-          @mouseleave="showIBAN = false"
         >
           {{ showIBAN ? account.iban : account.maskedPan[0] }}
         </div>
-        <span class="text-gray-500">{{ account.currency.code }}</span>
+        <span class="text-blue-gray-500">{{ account.currency.code }}</span>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 // import { clipboard } from 'electron'
 
 import MastercardLogo from '/@/../assets/mastercard.svg'
@@ -58,12 +56,11 @@ const props = defineProps<{
   account: any
 }>()
 
-const showIBAN = $ref(false)
+const showIBAN = false
 
+const { account } = $fromRefs(props)
 // const copyIBAN = (value: string) => {
 //   clipboard.writeText(value)
 //   copied = true
 // }
-
-const { account } = $fromRefs(props)
 </script>

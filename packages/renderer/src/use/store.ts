@@ -1,8 +1,26 @@
-// async function fetchGetAccess() {
-//   return axios.get(`/getAccess`)
-// }
+import { acceptHMRUpdate, defineStore } from 'pinia'
 
-// async function checkAccess(token) {
-//   axios.defaults.headers.common['X-Token'] = token
-//   return axios.get(`/checkAccess`)
-// }
+interface Statements {
+  [key: string]: Statement[]
+}
+
+export const useUserStore = defineStore('user', () => {
+  const userInfo = ref<UserInfo>()
+  const statements = ref<Statements>({})
+
+  const checkAccess = async() => await window.ipc.invoke('checkAccess')
+
+  const getUserInfo = async() => {
+    userInfo.value = await window.ipc.invoke('userInfo')
+  }
+
+  return {
+    userInfo,
+    statements,
+    checkAccess,
+    getUserInfo,
+  }
+})
+
+if (import.meta.hot)
+  import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot))

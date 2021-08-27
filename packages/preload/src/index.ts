@@ -20,8 +20,8 @@ if (import.meta.env.MODE !== 'test') {
   // the ipcRenderer without exposing the entire object
   contextBridge.exposeInMainWorld(
     'ipc', {
-      invoke: (channel: string, ...invokeArgs: any[]) => {
-        return ipcRenderer.invoke(channel, ...invokeArgs)
+      invoke: async(channel: string, ...invokeArgs: any[]) => {
+        return await ipcRenderer.invoke(channel, ...invokeArgs)
       },
     },
   )

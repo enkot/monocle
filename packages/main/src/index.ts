@@ -113,7 +113,7 @@ const createWindow = async() => {
    */
   mainWindow.on('ready-to-show', () => {
     if (env.MODE === 'development') {
-      mainWindow?.show()
+      // mainWindow?.show()
       mainWindow?.webContents.openDevTools()
     }
   })

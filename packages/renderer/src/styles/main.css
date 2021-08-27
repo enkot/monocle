@@ -22,3 +22,20 @@
 .shadow-wrap {
   filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.15));
 }
+
+.ps {
+  height: 100%;
+}
+.ps__rail-y {
+  border-radius: 8px 8px 0 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
