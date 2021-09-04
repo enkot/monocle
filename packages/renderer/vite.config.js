@@ -76,4 +76,14 @@ export default defineConfig({
     },
     emptyOutDir: true,
   },
+  optimizeDeps: {
+    include: [
+      'vue',
+      'vue-router',
+      '@vueuse/core',
+    ],
+    exclude: [
+      'vue-demi',
+    ],
+  },
 })

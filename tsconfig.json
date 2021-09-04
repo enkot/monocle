@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "module": "ESNext",
-    "target": "es2016",
+    "target": "es2017",
     "lib": [
       "DOM",
       "ESNext"
@@ -18,7 +18,8 @@
     "types": [
       "vite/client",
       "vite-plugin-pages/client",
-      "vite-plugin-vue-layouts/client"
+      "vite-plugin-vue-layouts/client",
+      "vite-svg-loader"
     ],
     "paths": {
       "~/*": [
@@ -27,7 +28,7 @@
     }
   },
   "exclude": [
-    "api",
+    "api/monobank-api-client",
     "dist",
     "node_modules"
   ]

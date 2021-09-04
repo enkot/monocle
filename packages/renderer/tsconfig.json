@@ -9,7 +9,6 @@
     },
     "lib": ["ESNext", "dom", "dom.iterable"]
   },
-
   "include": [
     "src/**/*.vue",
     "src/**/*.ts",

@@ -21,4 +21,7 @@ export default defineConfig({
       sans: ['Inter', ...defaultTheme.fontFamily.sans],
     },
   },
+  shortcuts: {
+    btn: 'inline-flex items-center px-4 py-3 border shadow text-base leading-4 font-medium rounded-md transition ease-in-out duration-150',
+  },
 })

@@ -70,10 +70,12 @@ interface CheckAccessData {
 }
 
 interface Currency {
-  currencyCodeA: number
-  currencyCodeB: number
+  currencyCodeA: any
+  currencyCodeB: any
   date: number
   rateSell: number
   rateBuy: number
   rateCross: number
+  symbol: string
+  code: string
 }

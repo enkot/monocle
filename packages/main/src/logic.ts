@@ -4,10 +4,13 @@ import Store from 'electron-store'
 
 const store = new Store()
 
-axios.defaults.adapter = require('axios/lib/adapters/http')
+const env = import.meta.env
 
+axios.defaults.adapter = require('axios/lib/adapters/http')
+// @ts-ignore
+// console.log(env.MODE)
 const api = axios.create({
-  baseURL: 'http://localhost:3001/api/',
+  baseURL: env.MODE === 'production' ? `${env.VITE_VERCEL_URL}/api` : 'http://localhost:3001/api',
 })
 
 ipcMain.handle('copy', async(value: any) => {
@@ -16,7 +19,7 @@ ipcMain.handle('copy', async(value: any) => {
 
 ipcMain.handle('getAccess', async(): Promise<string | null> => {
   try {
-    const { data } = await api.get<AccessData>('getaccess')
+    const { data } = await api.get<AccessData>('/getaccess')
     store.set('token', data?._tokenRequestId)
     return data?._acceptUrl
   }
@@ -31,7 +34,7 @@ ipcMain.handle('checkAccess', async(): Promise<boolean> => {
   if (!token) return false
 
   try {
-    const response = await api.get<CheckAccessData>('checkaccess', {
+    const response = await api.get<CheckAccessData>('/checkaccess', {
       headers: {
         'x-token': token,
       },
@@ -50,13 +53,11 @@ ipcMain.handle('userInfo', async(): Promise<UserInfo | null> => {
   if (!token) return null
 
   try {
-    const response = await api.get<UserInfo>('userinfo', {
+    const response = await api.get<UserInfo>('/userinfo', {
       headers: {
         'x-token': token,
       },
     })
-
-    // store.set('userInfo', response.data)
 
     return response.data
   }
@@ -71,7 +72,7 @@ ipcMain.handle('statement', async(channel, accountId): Promise<Statement[]> => {
   if (!token) return []
 
   try {
-    const response = await api.get<Statement[]>('statement', {
+    const response = await api.get<Statement[]>('/statement', {
       params: {
         account: accountId,
       },
@@ -80,11 +81,21 @@ ipcMain.handle('statement', async(channel, accountId): Promise<Statement[]> => {
       },
     })
 
-    // store.set('statement', response.data)
     return response.data
   }
   catch (e) {
     return []
+  }
+})
+
+ipcMain.handle('currency', async(): Promise<Currency[] | null> => {
+  try {
+    const response = await api.get<Currency[]>('/currency')
+
+    return response.data
+  }
+  catch {
+    return null
   }
 })
 

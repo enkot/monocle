@@ -27,7 +27,19 @@
   height: 100%;
 }
 .ps__rail-y {
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
+}
+
+.ps__thumb-y {
+  @apply bg-gray-300 bg-opacity-75;
+}
+
+.ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y {
+  @apply bg-gray-400 bg-opacity-75;
+}
+
+.ps .ps__rail-y:hover, .ps .ps__rail-y:focus, .ps .ps__rail-y.ps--clicking {
+  @apply bg-gray-200 bg-opacity-75;
 }
 
 .fade-enter-active,

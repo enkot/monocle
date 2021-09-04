@@ -1,28 +1,31 @@
 <script setup lang="ts">
 const props = defineProps<{
-  modelValue: string | number
+  modelValue: string | number | undefined
   type?: string
   placeholder?: string
   disabled?: boolean
 }>()
-const emit = defineEmits<(e: 'update:modelValue', value: string) => void>()
+const emit = defineEmits<(e: 'update:modelValue', value: string | number | undefined) => void>()
+
 const { modelValue, type } = toRefs(props)
 const focused = ref(false)
 const formatedValue = ref('')
-const stripValue = (value: any) => +parseFloat(String(value).replace(/[^0-9.]/g, ''))
+
+const isNumber = computed(() => type?.value === 'number')
+const stripValue = (value: any) => value && (+parseFloat(String(value).replace(/[^0-9.]/g, '')) || undefined)
 const formatValue = (value: any): string => {
-  if (type?.value === 'number') {
-    const stripedValue = stripValue(value)
-    return value ? new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(stripedValue) : ''
-  }
+  if (isNumber.value)
+    return new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(stripValue(value) || 0)
+
   return value
 }
 const onInput = (payload: Event) => {
   const { value } = payload.target as HTMLInputElement
-  formatedValue.value = formatValue(value)
-  emit('update:modelValue', type?.value === 'number' ? String(stripValue(value)) : value)
+  emit('update:modelValue', isNumber.value ? (stripValue(value)) : value)
 }
-watch(modelValue, value => formatedValue.value = formatValue(value))
+watch(modelValue, value => formatedValue.value = formatValue(value), {
+  immediate: true,
+})
 </script>
 
 <template>

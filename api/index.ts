@@ -71,4 +71,27 @@ app.get('/api/statement', async(req, res) => {
   )
 })
 
+app.get('/api/currency', async(req, res) => {
+  const currency = await api.getCurrencyList()
+
+  return res.json(
+    currency.map((item: Currency) => ({
+      currencyCodeA: item.currencyCodeA,
+      currencyCodeB: item.currencyCodeB,
+      date: item.date,
+      rateSell: item.rateSell,
+      rateBuy: item.rateBuy,
+      rateCross: item.rateCross,
+    })),
+  )
+})
+
+app.use(function(err: any, req: any, res: any, next: any) {
+  next()
+})
+
+process.on('uncaughtException', (err) => {
+  console.error(err);
+});
+
 export default app

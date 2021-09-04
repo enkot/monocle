@@ -41,9 +41,16 @@ class MonobankBaseApi {
         endpoint: Endpoint.CURRENCY_LIST,
       })
 
-      return data.map(v => new CurrencyInfo(v))
+      return data.map(v => {
+        try {
+          return new CurrencyInfo(v)
+        } catch(e) {
+          return null
+        } 
+      }).filter(Boolean)
     }
     catch (err) {
+      console.log(err)
       if (err.isAxiosError) {
         const { status, data } = err.response
 
