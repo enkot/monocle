@@ -1,5 +1,5 @@
 {
-  "name": "vite-electron-builder",
+  "name": "monocle",
   "private": true,
   "engines": {
     "node": ">=v14.16",

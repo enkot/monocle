@@ -1,9 +1,7 @@
 import { join } from 'path'
 import { URL } from 'url'
-import { app, BrowserWindow, Tray, Menu, ipcMain, nativeImage } from 'electron'
+import { app, BrowserWindow, Tray, Menu, ipcMain } from 'electron'
 import positioner from 'electron-traywindow-positioner'
-import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
-import trayIcon from './tray.png'
 import './logic'
 
 const isSingleInstance = app.requestSingleInstanceLock()
@@ -27,7 +25,8 @@ const env = import.meta.env
 // Install "Vue.js devtools"
 if (env.MODE === 'development') {
   app.whenReady()
-    .then(() => installExtension(VUEJS3_DEVTOOLS, {
+    .then(() => import('electron-devtools-installer'))
+    .then(({ default: installExtension, VUEJS3_DEVTOOLS }) => installExtension(VUEJS3_DEVTOOLS, {
       loadExtensionOptions: {
         allowFileAccess: true,
       },
@@ -48,7 +47,7 @@ const WINDOW_SIZE_DEFAULTS = {
 }
 
 function createTray() {
-  mainTray = new Tray(nativeImage.createFromDataURL(trayIcon))
+  mainTray = new Tray(join(__dirname, '../assets/tray.png'))
 
   mainTray.on('click', () => {
     ipcMain.emit('tray-window-clicked', { window: mainWindow, tray: mainTray })
