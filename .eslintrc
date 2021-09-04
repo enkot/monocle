@@ -17,6 +17,7 @@
     "node_modules/**",
     "api/**",
     "scripts/**",
-    "**/dist/**"
+    "**/dist/**",
+    "monobank-api-client/**"
   ]
 }

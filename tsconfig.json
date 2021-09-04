@@ -28,7 +28,7 @@
     }
   },
   "exclude": [
-    "api/monobank-api-client",
+    "monobank-api-client",
     "dist",
     "node_modules"
   ]

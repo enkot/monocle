@@ -1,6 +1,6 @@
 import express from 'express'
 // @ts-ignore
-import { ClientFactory, Permission } from './monobank-api-client'
+import { ClientFactory, Permission } from '../monobank-api-client'
 
 const app = express()
 const api = ClientFactory.createCorporate(process.env.KEY_ID, process.env.PRIVATE_KEY)
