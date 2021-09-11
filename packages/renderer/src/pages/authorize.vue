@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import VueQrcode from '@chenfengyuan/vue-qrcode'
 import { useUserStore } from '../use/store'
 
-import Logo from '/@/../assets/logo.svg'
+import Logo from '/@/../assets/logo.svg?component'
 
 const router = useRouter()
 const store = useUserStore()

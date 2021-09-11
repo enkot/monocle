@@ -58,7 +58,7 @@ const props = defineProps<{
 
 const showIBAN = false
 
-const { account } = $fromRefs(props)
+const { account } = toRefs(props)
 // const copyIBAN = (value: string) => {
 //   clipboard.writeText(value)
 //   copied = true

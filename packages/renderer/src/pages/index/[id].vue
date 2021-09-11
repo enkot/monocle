@@ -18,6 +18,7 @@ import TaxiIcon from '/@/../assets/taxi.svg?component'
 import AnimalsIcon from '/@/../assets/animals.svg?component'
 import BooksIcon from '/@/../assets/books.svg?component'
 import FlowersIcon from '/@/../assets/flowers.svg?component'
+import CinemaIcon from '/@/../assets/cinema.svg?component'
 
 dayjs.extend(localizedFormat)
 dayjs.locale('uk')
@@ -40,6 +41,7 @@ const icons: any = {
   animals: AnimalsIcon,
   books: BooksIcon,
   flowers: FlowersIcon,
+  cinema: CinemaIcon,
 }
 
 const props = defineProps<{
