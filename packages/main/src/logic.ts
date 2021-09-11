@@ -9,7 +9,7 @@ const env = import.meta.env
 axios.defaults.adapter = require('axios/lib/adapters/http')
 
 const api = axios.create({
-  baseURL: env.MODE === 'production' ? `https://${env.VERCEL_URL}/api` : 'http://localhost:3001/api',
+  baseURL: env.MODE === 'production' ? 'https://monocle-base.vercel.app/api' : 'http://localhost:3001/api',
 })
 
 ipcMain.handle('copy', async(value: any) => {
