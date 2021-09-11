@@ -1,3 +1,22 @@
+<script setup lang="ts">
+// import { clipboard } from 'electron'
+
+import MastercardLogo from '/@/../assets/mastercard.svg?component'
+import VisaLogo from '/@/../assets/visa.svg?component'
+
+const props = defineProps<{
+  account: any
+}>()
+
+const showIBAN = false
+
+const { account } = toRefs(props)
+// const copyIBAN = (value: string) => {
+//   clipboard.writeText(value)
+//   copied = true
+// }
+</script>
+
 <template>
   <div class="shadow-wrap">
     <div
@@ -45,22 +64,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-// import { clipboard } from 'electron'
-
-import MastercardLogo from '/@/../assets/mastercard.svg'
-import VisaLogo from '/@/../assets/visa.svg'
-
-const props = defineProps<{
-  account: any
-}>()
-
-const showIBAN = false
-
-const { account } = toRefs(props)
-// const copyIBAN = (value: string) => {
-//   clipboard.writeText(value)
-//   copied = true
-// }
-</script>
